@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/SpringHello" />
             <option value="$PROJECT_DIR$/servlet" />
+            <option value="$PROJECT_DIR$/simpleDao" />
           </set>
         </option>
       </GradleProjectSettings>
