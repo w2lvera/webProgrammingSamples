@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="customers.xml"/>
+
+    <bean id="customerDao" class="w2l.inspired.dao.CustomerSimpleDao">
+        <constructor-arg name="customers" ref="customers"/>
+    </bean>
+
+    <bean id="calc" class="w2l.inspired.logical.CustomerScoreCalc">
+        <constructor-arg name="prefix" value="P"/>
+        <constructor-arg name="initialScore" value="0"/>
+    </bean>
+
+    <bean id="dailyLogProcessor" class="w2l.inspired.logical.DailyLogFileProcessor">
+        <constructor-arg name="customerDao" ref="customerDao"/>
+    </bean>
+
+    <bean id = "customerChecker" name="customerChecker" class="w2l.inspired.logical.CustomersChecker">
+        <constructor-arg name="customerDao" ref="customerDao"/>
+        <constructor-arg name="logProcessor" ref="dailyLogProcessor"/>
+        <constructor-arg name="calc" ref="calc"/>
+    </bean>
+
+
+</beans>

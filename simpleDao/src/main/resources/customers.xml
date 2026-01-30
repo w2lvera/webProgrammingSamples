@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="customer1"  name="customer1" class="w2l.inspired.model.Customer">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="name" value="Ivanov"/>
+
+    </bean>
+    <bean id="customer2"  name="customer2" class="w2l.inspired.model.Customer">
+        <constructor-arg name="id" value="2"/>
+        <constructor-arg name="name" value="Petrov"/>
+    </bean>
+    <bean id="customer3"  name="customer3" class="w2l.inspired.model.Customer">
+        <constructor-arg name="id" value="3"/>
+        <constructor-arg name="name" value="Sidorov"/>
+    </bean>
+    <bean id="customer4"  name="customer4" class="w2l.inspired.model.Customer">
+        <constructor-arg name="id" value="4"/>
+        <constructor-arg name="name" value="Puskin"/>
+    </bean>
+    <bean id="customers" name="customers" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="customer1" />
+                <ref bean="customer2" />
+                <ref bean="customer3" />
+                <ref bean="customer4" />
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
