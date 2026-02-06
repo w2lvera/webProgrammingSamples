@@ -22,5 +22,25 @@ public class HelloServlet extends HttpServlet {
 
 
     }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        response.setContentType("application/json");
+        try {
+            PrintWriter writer = response.getWriter();
+            writer.println("{\"greeting\": \"Hello\"}");
+        }catch(IOException ex) {
+            throw ex;
+        }
+    }
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)throws IOException{
+        String name = request.getParameter("name");
+        response.setContentType("application/json");
+        try {
+            PrintWriter writer = response.getWriter();
+            writer.println("{\"greeting\": \"Hello, "+ name +"}");
+        }catch(IOException ex) {
+            throw ex;
+        }
+    }
+
 }
 
