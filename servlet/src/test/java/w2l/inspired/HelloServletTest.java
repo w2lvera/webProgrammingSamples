@@ -43,6 +43,6 @@ public class HelloServletTest {
         HelloServlet servlet = new HelloServlet();
         servlet.doPut(request,response);
         Assertions.assertTrue(stringWriter.toString().trim().contains("Hello, "+myName));
-
+        Assertions.assertEquals("{\"greeting\": \"Hello, user1\"}",stringWriter.toString().trim());
     }
 }

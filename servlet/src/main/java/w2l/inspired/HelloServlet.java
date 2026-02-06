@@ -36,7 +36,7 @@ public class HelloServlet extends HttpServlet {
         response.setContentType("application/json");
         try {
             PrintWriter writer = response.getWriter();
-            writer.println("{\"greeting\": \"Hello, "+ name +"}");
+            writer.println("{\"greeting\": \"Hello, "+ name +"\"}");
         }catch(IOException ex) {
             throw ex;
         }
