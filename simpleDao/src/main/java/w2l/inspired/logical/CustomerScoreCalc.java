@@ -16,6 +16,10 @@ public class CustomerScoreCalc {
     }
 
 
+    public String getPrefix() {
+        return prefix;
+    }
+
     public int calculateScore(List<DailyLog> log){
         int score = initialScore;
         for(DailyLog logEntry: log){
@@ -25,6 +29,7 @@ public class CustomerScoreCalc {
 //            }
             if(logEntry.getStatus().equals(DONE))score += logEntry.getCustomer().getName().startsWith(prefix)?1:0;
         }
+
         return score;
     }
 }

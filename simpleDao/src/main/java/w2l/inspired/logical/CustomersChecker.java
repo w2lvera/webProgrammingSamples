@@ -33,6 +33,10 @@ public class CustomersChecker {
         this.calc = calc;
     }
 
+    public DailyLogProcessor getLogProcessor() {
+        return logProcessor;
+    }
+
     public void run(){
         PrintStream out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
         Scanner in = new Scanner(System.in);
@@ -41,7 +45,7 @@ public class CustomersChecker {
         try {
             list.addAll(logProcessor.getLog());
         } catch (IOException e) {
-           LOGGER.warn("Motivation Events are not read!");
+           LOGGER.warn("Customers are not read!");
         }
         out.println("Баланс: " + calc.calculateScore(list));
         out.println("Заполняем результат за " + LocalDate.now());
