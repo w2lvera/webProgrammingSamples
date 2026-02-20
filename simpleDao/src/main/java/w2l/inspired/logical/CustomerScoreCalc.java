@@ -1,15 +1,17 @@
 package w2l.inspired.logical;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import w2l.inspired.model.DailyLog;
 
 import java.util.List;
 
 import static w2l.inspired.model.CompletionStatus.DONE;
-
+@Component
 public class CustomerScoreCalc {
     private final String prefix;
     private final int initialScore;
-
+@Autowired
     public CustomerScoreCalc(String prefix, int initialScore) {
         this.prefix = prefix;
         this.initialScore = initialScore;

@@ -1,5 +1,7 @@
 package w2l.inspired;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import w2l.inspired.dao.CustomerDao;
 import w2l.inspired.dao.CustomerSimpleDao;
 import w2l.inspired.logical.CustomerScoreCalc;
@@ -17,20 +19,20 @@ import java.util.List;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //init spring beans
-        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
-        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
-        reader.loadBeanDefinitions(new ClassPathResource("config.xml"));
+        ApplicationContext context = new ClassPathXmlApplicationContext(
+                "config.xml");
 
-        //MotivationEventsChecker checker = factory.getBean("motivationChecker", MotivationEventsChecker.class);
-        CustomersChecker checker = (CustomersChecker)factory.getBean("customerChecker");
+        //init spring beans
+
+       // MotivationEventsChecker checker = factory.getBean("motivationChecker", MotivationEventsChecker.class);
+        CustomersChecker checker = (CustomersChecker)context.getBean("customerChecker");
 //        Customer customer1 = new Customer(1, "Ivanov");
 //        Customer customer2 = new Customer(2, "Petrov");
 //        Customer customer3 = new Customer(3, "Sidorov");
 //        Customer customer4 = new Customer(4, "Pushkin");
 //
      // List<Customer> list = List.of(customer1,customer2,customer3,customer4);
-       CustomerDao customerDao = new CustomerSimpleDao();
+      // CustomerDao customerDao = new CustomerSimpleDao();
 //        CustomerScoreCalc calc = new CustomerScoreCalc("P",0);
 //        DailyLogProcessor processor = new DailyLogFileProcessor(customerDao);
 ////        то есть мы в коде жестко прописываем какие экземпляры создавать и куда их передавать как параметры

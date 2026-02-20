@@ -4,6 +4,8 @@ package w2l.inspired.logical;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import w2l.inspired.dao.CustomerDao;
 import w2l.inspired.model.CompletionStatus;
 import w2l.inspired.model.Customer;
@@ -16,7 +18,7 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-
+@Component
 public class CustomersChecker {
 
     public static Logger LOGGER = LogManager.getLogger(CustomersChecker.class);
@@ -24,7 +26,7 @@ public class CustomersChecker {
     private final CustomerDao customerDao;
     private final DailyLogProcessor logProcessor;
     private final CustomerScoreCalc calc;
-
+    @Autowired
     public CustomersChecker(CustomerDao customerDao,
                                    DailyLogProcessor logProcessor,
                                    CustomerScoreCalc calc) {

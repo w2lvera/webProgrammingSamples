@@ -1,14 +1,16 @@
 package w2l.inspired.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import w2l.inspired.model.Customer;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
-
+@Component
 public class CustomerSimpleDao implements CustomerDao{
     private final List<Customer> customers;
-
+@Autowired
     public CustomerSimpleDao() {
         customers = new LinkedList<>();
         customers.add(new Customer(1, "Ivanov"));
@@ -16,6 +18,7 @@ public class CustomerSimpleDao implements CustomerDao{
         customers.add(new Customer(3, "Sidorov"));
         customers.add(new Customer(4, "Pushkin"));
     }
+    @Autowired
     public CustomerSimpleDao(List<Customer> customers) {
         this.customers = customers;
     }

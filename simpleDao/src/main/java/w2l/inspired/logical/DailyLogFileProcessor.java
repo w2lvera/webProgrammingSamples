@@ -1,6 +1,8 @@
 package w2l.inspired.logical;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import w2l.inspired.dao.CustomerDao;
 import w2l.inspired.model.CompletionStatus;
 import w2l.inspired.model.Customer;
@@ -16,13 +18,13 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
-
+@Component
 public class DailyLogFileProcessor implements DailyLogProcessor {
 
     static final String DATE_FORMAT = "dd.MM.yy";
     private static final String DEFAULT_FILE_NAME = "customerLog.csv";
     private final CustomerDao customerDao;
-
+    @Autowired
     public DailyLogFileProcessor(CustomerDao customerDao) {
         this.customerDao = customerDao;
     }
