@@ -2,4 +2,5 @@ rootProject.name = 'webProgrammingSamples'
 include 'SpringHello'
 include 'servlet'
 include 'simpleDao'
+include 'servletMVC_webconfig'
 
