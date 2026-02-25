@@ -3,4 +3,5 @@ include 'SpringHello'
 include 'servlet'
 include 'simpleDao'
 include 'servletMVC_webconfig'
+include 'servletMVC_xml'
 

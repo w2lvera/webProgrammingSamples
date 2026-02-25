@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/SpringHello" />
             <option value="$PROJECT_DIR$/servlet" />
             <option value="$PROJECT_DIR$/servletMVC_webconfig" />
+            <option value="$PROJECT_DIR$/servletMVC_xml" />
             <option value="$PROJECT_DIR$/simpleDao" />
           </set>
         </option>
