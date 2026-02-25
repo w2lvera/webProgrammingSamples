@@ -17,7 +17,8 @@ public class CustomerScoreCalc {
         this.initialScore = initialScore;
     }
 
-
+   // Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'customerScoreCalc
+   // ' defined in file [C:\javatools\apache-tomcat-10.1.50\webapps\simpleDao\WEB-INF\classes\w2l\inspired\logical\CustomerScoreCalc.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'java.lang.String' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
     public String getPrefix() {
         return prefix;
     }

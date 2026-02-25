@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,8 +19,8 @@ import w2l.inspired.logical.DailyLogProcessor;
 
 @Controller
 public class CustomerController {
-    @Autowired
-    private CustomerSimpleDao customerSimpleDao;
+//    @Autowired
+  //  private CustomerSimpleDao customerSimpleDao;
 //    @Autowired
 //    private CustomersChecker checker;
 //    @Autowired
@@ -26,10 +28,16 @@ public class CustomerController {
 //    @Autowired
 //    private CustomerScoreCalc calc;
 //    public static Logger LOGGER = LogManager.getLogger(CustomersChecker.class);
-    @ResponseBody
-    public String getGreeting() {
-        return "Hello world.";
-    }
+@GetMapping("/hello")
+public String handle(Model model) {
+    model.addAttribute("message", "Hello World! Welcome to Spring MVC with Gradle and XML.");
+    return "index";
+}
+ //   @GetMapping("/simpleDao")
+ //   @ResponseBody
+ //   public String getGreeting() {
+ //       return "Hello world.";
+//    }
 //    @RequestMapping (path = "/today", method = RequestMethod.GET)
 //    public void today() {
 //        if(this.customerSimpleDao == null || this.calc == null)

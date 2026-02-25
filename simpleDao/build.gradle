@@ -5,19 +5,27 @@ plugins {
 
 group = 'w2l.inspired'
 version = '1.0'
+
+
 war{
     archiveBaseName ='simpleDao'
     archiveVersion = ''
-    from("${project.rootDir}/src/main/resources"){
-        include ('config.xml')
+    from("/src/main/resources"){
+
+        include ('index.jsp')
         into('WEB-INF');
-    }
-    from("${project.rootDir}/src/main/resources"){
         include ('customers.xml')
         into('WEB-INF');
+        include ('context.xml')
+        into('WEB-INF');
     }
+
     webXml = file('src/main/resources/web.xml')
 }
+
+
+
+
 repositories {
     mavenCentral()
 }

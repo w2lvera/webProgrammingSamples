@@ -10,7 +10,6 @@ import java.util.NoSuchElementException;
 @Component
 public class CustomerSimpleDao implements CustomerDao{
     private final List<Customer> customers;
-@Autowired
     public CustomerSimpleDao() {
         customers = new LinkedList<>();
         customers.add(new Customer(1, "Ivanov"));
