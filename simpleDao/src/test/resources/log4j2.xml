@@ -7,10 +7,10 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="org.apache" level="debug">
+        <Logger name="w2l.inspired" level="info">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.springframework" level="debug">
+        <Logger name="org.springframework" level="info">
             <AppenderRef ref="Console"/>
         </Logger>
         <Root level="warn">

@@ -29,6 +29,7 @@ public class CustomerSimpleDao implements CustomerDao{
 
     @Override
     public Customer getCustomerById(int id) throws NoSuchElementException {
+
         return customers.stream().filter(e->e.getId() == id).findFirst().get();
     }
 
