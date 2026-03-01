@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Thymeleaf Example as index</title>
-    <link rel="stylesheet" th:href="@{styles.css}" type="text/css"/>
+    <link rel="stylesheet" type="text/css" media="all"
+             href="../../static/styles.css""/>
 </head>
 <body>
 

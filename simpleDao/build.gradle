@@ -12,23 +12,12 @@ war{
     archiveVersion = ''
     from("/src/main/resources"){
 
-        include ('index.jsp')
-        into('WEB-INF');
-        include ('customerLog.csv')
-        into('WEB-INF');
-        include ('result.jsp')
-        into('WEB-INF');
-        include ('markCustomers.jsp')
-        into('WEB-INF');
-        include ('markCustomers1.jsp')
-        into('WEB-INF');
         include ('customers.xml')
         into('WEB-INF');
         include ('context.xml')
         into('WEB-INF');
     }
 
-    webXml = file('src/main/resources/web.xml')
 }
 
 
@@ -58,8 +47,8 @@ dependencies {
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
    // https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
-//https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
-implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.1.1'
+    //https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.1.1'
 
 }
 

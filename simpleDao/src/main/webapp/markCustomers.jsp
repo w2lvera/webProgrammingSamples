@@ -7,7 +7,7 @@
         <title>Spring MVC view layer: Thymeleaf vs. JSP</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" media="all"
-          href="../../static/styles.css" th:href="@{/static/styles.css}"/>
+          href="../../static/styles.css" />
 </head>
 <body>
 <h1><%= "Hello World!" %>

@@ -2,6 +2,7 @@ package w2l.inspired.logical;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import w2l.inspired.dao.CustomerDao;
 import w2l.inspired.model.CompletionStatus;
@@ -24,16 +25,20 @@ public class DailyLogFileProcessor implements DailyLogProcessor {
     static final String DATE_FORMAT = "dd.MM.yy";
     private static final String DEFAULT_FILE_NAME = "customerLog.csv";
     private final CustomerDao customerDao;
+    private final String filePath;
     @Autowired
-    public DailyLogFileProcessor(CustomerDao customerDao) {
+    public DailyLogFileProcessor(CustomerDao customerDao, @Value("${output.file.path}") String outPath) {
         this.customerDao = customerDao;
+        this.filePath = outPath;
     }
 
     @Override
     public List<DailyLog> getLog() throws IOException {
         List<DailyLog> list = new LinkedList<>();
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(DEFAULT_FILE_NAME)){
+        File dataDir = new File(filePath);
+        File targetFile = getTargetFile(dataDir);
+        try (InputStream inputStream = new FileInputStream(targetFile)){
             InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             BufferedReader reader = new BufferedReader(streamReader);
             for (String line; (line = reader.readLine()) != null;){
@@ -62,11 +67,21 @@ public class DailyLogFileProcessor implements DailyLogProcessor {
     @Override
     public void reWriteLog(List<DailyLog> log) throws IOException {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
-        try (FileWriter writer = new FileWriter(DEFAULT_FILE_NAME, true)) {
+        File dataDir = new File(filePath);
+        File targetFile = getTargetFile(dataDir);
+        try (FileWriter writer = new FileWriter(targetFile, true)) {
             for (DailyLog logEntry : log) {
                 String dateStr = logEntry.getDate().format(dateTimeFormatter);
                 writer.write(dateStr + "," + logEntry.getCustomer().getId() + "," + logEntry.getStatus().name()+"\n");
             }
         }
+    }
+
+    private static File getTargetFile(File dataDir) {
+        if (!dataDir.exists()) {
+            dataDir.mkdirs();
+        }
+        File targetFile = new File(dataDir, DEFAULT_FILE_NAME);
+        return targetFile;
     }
 }
