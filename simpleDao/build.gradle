@@ -41,6 +41,7 @@ dependencies {
     testImplementation group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.0.0'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.2')
     // Source: https://mvnrepository.com/artifact/org.springframework/spring-test
     testImplementation("org.springframework:spring-test:7.0.4")
     //https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp.jstl
