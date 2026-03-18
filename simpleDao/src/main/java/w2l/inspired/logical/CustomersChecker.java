@@ -19,7 +19,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 @Component
-public class CustomersChecker {
+public class     CustomersChecker {
 
     public static Logger LOGGER = LogManager.getLogger(CustomersChecker.class);
 

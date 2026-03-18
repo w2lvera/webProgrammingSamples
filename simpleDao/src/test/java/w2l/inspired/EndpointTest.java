@@ -3,6 +3,7 @@ package w2l.inspired;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -16,13 +17,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringJUnitWebConfig(locations = "classpath:context.xml")
 public class EndpointTest {
-    MockMvc mockMvc;
+
+    @Autowired
+    private WebApplicationContext context;
+    private MockMvc mockMvc;
     @BeforeEach
-    void setup(WebApplicationContext wac){
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+    public void setup(){
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).build();
     }
     @Test
-
     void testGet()throws Exception{
         String url = "/today";
         mockMvc.perform(get(url))
@@ -32,10 +35,10 @@ public class EndpointTest {
     @Test
     void testPostOneP()throws Exception{
         String url = "/today";
-        mockMvc.perform(post(url).content("1=on&2=on"))
+        mockMvc.perform(post(url).content("1=on&2=on&3=on&4=on"))
                 .andExpect(model().size(5))
-                .andExpect(model().attribute("yesterday",0))
-                .andExpect(model().attribute("now",1))
+                .andExpect(model().attribute("yesterday",2))
+                .andExpect(model().attribute("now",2))
                 .andExpect(status().isOk());
     }
 }

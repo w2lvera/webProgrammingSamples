@@ -24,11 +24,9 @@ public class CustomerScoreCalc {
     public int calculateScore(List<DailyLog> log){
         int score = initialScore;
         for(DailyLog logEntry: log){
-//            switch (logEntry.getStatus()){
-//                case DONE -> score += logEntry.getCustomer().getName().startsWith(prefix)?1:0;
-//               // case FAILED -> score -= logEntry.getEvent().getFee();
-//            }
-            if(logEntry.getStatus().equals(DONE))score += logEntry.getCustomer().getName().startsWith(prefix)?1:0;
+            if(logEntry.getStatus().equals(DONE)) {
+                score += logEntry.getCustomer().getName().startsWith(prefix) ? 1 : 0;
+            }
         }
 
         return score;
